@@ -1,159 +1,187 @@
-import project1 from "../assets/projects/project-1.jpg";
-import project2 from "../assets/projects/project-2.jpg";
-import project3 from "../assets/projects/project-3.jpg";
-import project4 from "../assets/projects/project-4.jpg";
+import githubLink from "../assets/projects/githubLink.jpg";
 
 import {FaNodeJs} from "react-icons/fa";
-import { SiPhp } from "react-icons/si";
-import { DiJava } from "react-icons/di";
-import { SiTypescript } from "react-icons/si";
-import { SiMysql } from "react-icons/si";
+import {DiJava} from "react-icons/di";
+import {SiTypescript} from "react-icons/si";
 import {SiMongodb} from "react-icons/si";
 import {BiLogoPostgresql} from "react-icons/bi";
-import { FaSymfony } from "react-icons/fa";
+import {FaSymfony} from "react-icons/fa";
 import {RiReactjsLine} from "react-icons/ri";
-import { SiNestjs } from "react-icons/si";
-import { SiSpringboot } from "react-icons/si";
-import { IoLogoFirebase } from "react-icons/io5";
-import { SiRabbitmq } from "react-icons/si";
-import { FaGitAlt } from "react-icons/fa";
+import {SiNestjs} from "react-icons/si";
+import {SiSpringboot} from "react-icons/si";
+import {IoLogoFirebase} from "react-icons/io5";
+import {SiRabbitmq} from "react-icons/si";
+import {FaGitAlt} from "react-icons/fa";
+import {FaGolang} from "react-icons/fa6";
+import {RiTailwindCssFill} from "react-icons/ri";
+import {SiMariadbfoundation} from "react-icons/si";
 
-// export const HERO_CONTENT = `I am a passionate full stack developer with a knack for crafting robust and scalable web applications. With 5 years of hands-on experience, I have honed my skills in front-end technologies like React and Next.js, as well as back-end technologies like Node.js, MySQL, PostgreSQL, and MongoDB. My goal is to leverage my expertise to create innovative solutions that drive business growth and deliver exceptional user experiences.`;
-export const HERO_CONTENT = `I am a developer with nearly 3 years of experience in web and software application development. 
-What drives me is the ability of programming to turn ideas into reality. Each line of code helps create solutions, tools, or systems that didn’t exist before.
-I am particularly drawn to object-oriented programming, algorithms, and clean code. No matter the size of the project, I like to structure everything efficiently and thoughtfully, always striving to improve and innovate.
-To me, code is a way to shape the future and transform the world around us. It’s this magic—bringing imagination to life through code—that pushes me to keep going further.
-`;
+import {IContact, IExperience, IFormation, IProject, ITechIcon} from "./types";
 
-export const ABOUT_TEXT = `
-I am a curious and dedicated full stack developer with 3 years of experience gained through an apprenticeship. I work with front-end technologies like HTML/CSS, JavaScript, React, and Tailwind, and back-end tools such as PHP, JavaScript/TypeScript, Node.js/Express, and Java. I'm also experienced with databases like MySQL, PostgreSQL, MariaDB, and MongoDB, and familiar with tools like Git, Firebase, RabbitMQ, and CI/CD.\n
-What drew me to development is the freedom to create, and that still drives me today. I thrive in collaborative environments and enjoy tackling complex problems while continuously learning new things.\n
-Outside of coding, I stay active by running and playing football. I also love watching movies and getting lost in a good book, which helps me stay balanced and inspired.
-`;
+export const HERO_CONTENT = `Je suis développeur avec près de 3 ans d'expérience dans le développement d'applications web et logicielles. 
+Ce qui me passionne, c'est la liberté de transformer des idées en solutions concrètes. 
+J'aime structurer mes projets de manière réfléchie et efficace, tout en cherchant constamment à m'améliorer et à innover. 
+Pour moi, coder, c'est bien plus qu'écrire des lignes de code : c'est contribuer à façonner l'avenir et à avoir un impact sur le monde qui nous entoure.`;
 
-export const EXPERIENCES = [
+export const ABOUT_TEXT = `Mon parcours académique a débuté par une licence en Mathématiques et Informatique, où j'ai acquis les bases essentielles de l'informatique, de l'algorithmique, de l'algèbre et des mathématiques appliquées.
+Cette formation m'a permis de poser des fondations solides pour aborder des problématiques techniques avec rigueur.
+
+Après la licence, j'ai poursuivi avec un bachelor en alternance, où j'ai allié apprentissage théorique et mise en pratique. 
+Cette expérience m'a permis de découvrir concrètement le développement logiciel en travaillant avec diverses technologies, notamment en front-end, back-end, et bases de données.
+
+Lors de mon master en alternance, j'ai participé à des projets plus complexes, nécessitant une organisation rigoureuse et une collaboration efficace en équipe. 
+J'ai conçu et implémenté des pipelines CI/CD pour automatiser les processus de développement et de déploiement. J'ai également utilisé des outils tels que Jira et Trello pour la gestion de projets, et Scaleway pour des déploiements dans le cloud. Ces projets m'ont permis de travailler sur des solutions robustes et évolutives tout en consolidant mes compétences techniques.
+
+Ces expériences combinées m'ont offert une progression significative, tant sur le plan technique qu'organisationnel, et m'ont familiarisé avec les outils et méthodologies essentiels au développement logiciel moderne.`;
+
+export const EXPERIENCES: IExperience[] = [
   {
-    year: "2023 - Present",
-    role: "Senior Full Stack Developer",
-    company: "Google Inc.",
-    description: `Led a team in developing and maintaining web applications using JavaScript, React.js, and Node.js. Implemented RESTful APIs and integrated with MongoDB databases. Collaborated with stakeholders to define project requirements and timelines.`,
-    technologies: ["Javascript", "React.js", "Next.js", "mongoDB"],
+    year: "2020 - 2021",
+    role: "Développeur Full-stack en alternance",
+    company: "Humanity Diaspo",
+    description: "Développement d'une application web et mobile avec l'accompagnement de Microsoft et Devoteam : choix de la stack technique, mise en place de l'environnement Agile. Migration d'une API de PHP natif vers Laravel, optimisation de la base de données et implémentation de fonctionnalités clés (paiement, géolocalisation, Facebook Live).",
+    technologies: ["React.js", "Node.js", "MongoDB", "Material UI", "Laravel", "PHP", "Bubble.io", "Trello", "GitHub"]
   },
   {
-    year: "2022 - 2023",
-    role: "Frontend Developer",
-    company: "Adobe",
-    description: `Designed and developed user interfaces for web applications using Next.js and React. Worked closely with backend developers to integrate frontend components with Node.js APIs. Implemented responsive designs and optimized frontend performance.`,
-    technologies: ["HTML", "CSS", "Vue.js", "mySQL"],
+    year: "2022 - 2024",
+    role: "Développeur Backend en alternance",
+    company: "IAD",
+    description: "Contribution au développement d'une application métier pour les professionnels de l'immobilier, avec un focus sur la facturation et les fonctionnalités d'abonnement. Utilisation de PHP, Symfony, PostgreSQL, RabbitMQ, Git/GitHub et Jira pour le développement et la collaboration sur les projets.",
+    technologies: ["PHP", "Symfony", "PostgreSQL", "RabbitMQ", "Git", "GitHub", "Jira"]
+  },
+];
+
+export const PROJECTS: IProject[] = [
+  {
+    title: "Garbin API",
+    image: githubLink,
+    description: "Une API RESTful pour un projet permettant aux utilisateurs de gérer et planifier leurs tenues vestimentaires.",
+    technologies: [
+      "Node.js", "Express", "TSOA", "Mariadb",
+      "Typeorm", "Firebase", "Cloudinary",
+      "Design Patterns", "Clean Architecture"
+    ],
+    link: "https://github.com/adem02/mt5-garbin-backend"
   },
   {
-    year: "2021 - 2022",
-    role: "Full Stack Developer",
-    company: "Facebook",
-    description: `Developed and maintained web applications using JavaScript, React.js, and Node.js. Designed and implemented RESTful APIs for data communication. Collaborated with cross-functional teams to deliver high-quality software products on schedule.`,
-    technologies: ["Python", "Svelte", "Three.js", "Postgres"],
+    title: "Portfolio",
+    image: githubLink,
+    description: "Un site portfolio personnel qui me permettant de présenter mes compétences, projets et expériences.",
+    technologies: ["React", "Typescript", "Tailwind CSS", "Framer Motion"],
+    link: "https://github.com/adem02/personal_portfolio"
+  },
+  {
+    title: "Epse",
+    image: githubLink,
+    description: "Un outil CLI développé en Go pour créer dynamiquement des structures de projet Express.",
+    technologies: ["Go", "Cobra", "Viper", "CLI"],
+  },
+];
+
+export const CONTACT: IContact = {
+  address: "Reims, Paris. France",
+  phoneNo: "+33 6 14 28 82 85",
+  email: "demahmed02@gmail.com",
+};
+
+export const FORMATIONS: IFormation[] = [
+  {
+    year: "2014 - 2018",
+    school: "Université gustave Eiffel - Champs-sur-Marne",
+    description: `Formation universitaire alliant mathématiques et informatique, avec une spécialisation en algorithmique, programmation et bases de données. 
+    Elle m’a permis d’acquérir des bases solides en développement, résolution de problèmes et gestion des données.`,
+    grade: "Licence - Mathématiques et Informatique"
   },
   {
     year: "2020 - 2021",
-    role: "Software Engineer",
-    company: "Paypal",
-    description: `Contributed to the development of web applications using JavaScript, React.js, and Node.js. Managed databases and implemented data storage solutions using MongoDB. Worked closely with product managers to prioritize features and enhancements.`,
-    technologies: ["Ruby", "Rails", "PHP", "Sqlite"],
+    school: "Etna - Paris",
+    description: `Aprofondissement des systèmes d'information et de la gestion de projets technologiques, 
+    avec un focus sur le développement, l’architecture SI et la coordination entre les différentes étapes des projets informatiques.`,
+    grade: "Bachelor - Concepteur de projets SI"
   },
-];
+  {
+    year: "2022 - 2024",
+    school: "Hetic - Montreuil",
+    description: `Formation spécialisée en leadership technologique et transformation digitale, avec un accent sur la gestion de projets, 
+    l'architecture technique et la coordination des équipes dans des environnements innovants.`,
+    grade: "Master - CTO & Tech lead"
+  }
+]
 
-export const PROJECTS = [
-  {
-    title: "E-Commerce Website",
-    image: project1,
-    description:
-      "A fully functional e-commerce website with features like product listing, shopping cart, and user authentication.",
-    technologies: ["HTML", "CSS", "React", "Node.js", "MongoDB"],
-  },
-  {
-    title: "Task Management App",
-    image: project2,
-    description:
-      "An application for managing tasks and projects, with features such as task creation, assignment, and progress tracking.",
-    technologies: ["HTML", "CSS", "Angular", "Firebase"],
-  },
-  {
-    title: "Portfolio Website",
-    image: project3,
-    description:
-      "A personal portfolio website showcasing projects, skills, and contact information.",
-    technologies: ["HTML", "CSS", "React", "Bootstrap"],
-  },
-  {
-    title: "Blogging Platform",
-    image: project4,
-    description:
-      "A platform for creating and publishing blog posts, with features like rich text editing, commenting, and user profiles.",
-    technologies: ["HTML", "CSS", "Vue.js", "Express", "mySQL"],
-  },
-];
-
-export const CONTACT = {
-  address: "767 Fifth Avenue, New York, NY 10153 ",
-  phoneNo: "+12 4555 666 00 ",
-  email: "me@example.com",
-};
-
-export const TECHICONS = [
+export const TECHICONS: ITechIcon[] = [
   {
     icon: FaNodeJs,
-    color: "text-green-500"
-  },
-  {
-    icon: SiPhp,
-    color: "text-blue-500"
-  },
-  {
-    icon: DiJava,
-    color: "text-red-500"
+    color: "text-green-500",
+    tooltip: "Node.js"
   },
   {
     icon: SiTypescript,
-    color: "text-blue-500"
+    color: "text-blue-500",
+    tooltip: "Typescript"
   },
   {
-    icon: SiMysql,
-    color: "text-blue-500"
+    icon: DiJava,
+    color: "text-red-500",
+    tooltip: "Java"
   },
   {
-    icon: SiMongodb,
-    color: "text-green-500"
+    icon: FaGolang,
+    color: "text-blue-500",
+    tooltip: "Golang"
+  },
+  {
+    icon: SiMariadbfoundation,
+    color: "text-blue-600",
+    tooltip: "MariaDB"
   },
   {
     icon: BiLogoPostgresql,
-    color: "text-blue-500"
+    color: "text-blue-500",
+    tooltip: "PostgreSQL"
   },
   {
-    icon: FaSymfony,
-    color: "text-black-500"
+    icon: SiMongodb,
+    color: "text-green-500",
+    tooltip: "MongoDB"
   },
   {
     icon: RiReactjsLine,
-    color: "text-blue-500"
+    color: "text-blue-500",
+    tooltip: "React.js"
+  },
+  {
+    icon: RiTailwindCssFill,
+    color: "text-blue-500",
+    tooltip: "Tailwind CSS"
   },
   {
     icon: SiNestjs,
-    color: "text-red-500"
+    color: "text-red-500",
+    tooltip: "Nest.js"
+  },
+  {
+    icon: FaSymfony,
+    color: "text-black-500",
+    tooltip: "Symfony"
   },
   {
     icon: SiSpringboot,
-    color: "text-green-500"
+    color: "text-green-500",
+    tooltip: "Spring Boot"
   },
   {
     icon: IoLogoFirebase,
-    color: "text-yellow-500"
+    color: "text-yellow-500",
+    tooltip: "Firebase"
   },
   {
     icon: SiRabbitmq,
-    color: "text-red-500"
+    color: "text-red-500",
+    tooltip: "RabbitMQ"
   },
   {
     icon: FaGitAlt,
-    color: "text-red-500"
-  }
+    color: "text-red-500",
+    tooltip: "Git"
+  },
 ];
