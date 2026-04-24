@@ -1,4 +1,19 @@
-import githubLink from "../assets/projects/githubLink.jpg";
+import epseProjectGenerationScreenshot from "../assets/projects/epse-screenshot-project-generation.png";
+import epseAddRouteDemo from "../assets/projects/epse-add-route-demo.gif";
+import vipClothesHeroWeb from "../assets/projects/vip-clothes-homage-hero-section-web.png";
+import vipClothesCategorySectionMobile from "../assets/projects/vip-clothes-homage-category-top-section-mobile.png";
+import vipClothesProductDetailsMobile from "../assets/projects/vip-clothes-product-details-mobile.png";
+import vipClothesSearchMobile from "../assets/projects/vip-clothes-search-page-mobile.png";
+import vipClothesImportProductsDemo from "../assets/projects/vip-clothes-import-products-demo.gif";
+import vipClothesAdminLoginMobile from "../assets/projects/vip-clothes-admin-login-form-page-mobile.png";
+import vipClothesAdminImportMobile from "../assets/projects/vip-clothes-admin-import-page-mobile.png";
+import garbinApiCover from "../assets/projects/garbin-api-cover.svg";
+import epseInterfaceTemplatesPage from "../assets/projects/epse-interface-screeshot-templates-page.png";
+import epseInterfaceProjectDetailsPage from "../assets/projects/epse-interface-screeshot-project-details-page.png";
+import epseInterfaceGenerateCommandPage from "../assets/projects/epse-interface-screeshot-cb-page-generate-cmd.png";
+import epseInterfaceAddRouteCommandPage from "../assets/projects/epse-interface-screeshot-cb-page-add-route-cmd.png";
+import epseInterfaceDocsPage from "../assets/projects/epse-interface-screeshot-doc-page.png";
+import epseInterfaceAddRouteCommandDemo from "../assets/projects/epse-interface-construct-add-route-command-demo.gif";
 
 import {FaNodeJs} from "react-icons/fa";
 import {DiJava} from "react-icons/di";
@@ -53,28 +68,73 @@ export const EXPERIENCES: IExperience[] = [
 
 export const PROJECTS: IProject[] = [
   {
-    title: "Garbin API",
-    image: githubLink,
-    description: "Une API RESTful pour un projet permettant aux utilisateurs de gérer et planifier leurs tenues vestimentaires.",
-    technologies: [
-      "Node.js", "Express", "TSOA", "Mariadb",
-      "Typeorm", "Firebase", "Cloudinary",
-      "Design Patterns", "Clean Architecture"
+    title: "EPSE CLI",
+    tagline: "Générateur de projets Express/TypeScript en ligne de commande, conçu pour aller vite.",
+    image: epseProjectGenerationScreenshot,
+    description: "Un outil CLI en Go que j'ai créé pour ne plus perdre de temps à bootstrapper un projet backend. En moins d'une minute, il génère une base propre avec deux modes d'architecture (Lite ou Clean) et permet d'ajouter des routes CRUD via une seule commande.",
+    technologies: ["Go", "Cobra", "embed.FS", "Templates", "TypeScript"],
+    links: [
+      {type: "github", url: "https://github.com/adem02/epse"},
+      {type: "docs", url: "https://github.com/adem02/epse#readme"}
     ],
-    link: "https://github.com/adem02/mt5-garbin-backend"
+    gallery: [
+      {src: epseAddRouteDemo, alt: "EPSE CLI add route gif demo"},
+      {src: epseProjectGenerationScreenshot, alt: "EPSE CLI project generation screenshot"}
+    ],
+    level: "flagship"
   },
   {
-    title: "Portfolio",
-    image: githubLink,
-    description: "Un site portfolio personnel qui me permettant de présenter mes compétences, projets et expériences.",
-    technologies: ["React", "Typescript", "Tailwind CSS", "Framer Motion"],
-    link: "https://github.com/adem02/personal_portfolio"
+    title: "VIP Clothes",
+    tagline: "Application vitrine mode, catalogue et gestion de stock.",
+    image: vipClothesHeroWeb,
+    description: "Une application de présentation de catalogue vêtements pensée pour un contexte où la connexion est limitée et les appareils variés. L'enjeu était de proposer une expérience fluide et rapide indépendamment des conditions d'utilisation, avec une interface accessible côté admin pour gérer le catalogue.",
+    technologies: ["Next.js 15", "TypeScript", "Tailwind CSS", "Zustand", "Firebase", "Cloudinary", "Algolia", "Vercel"],
+    links: [
+      {type: "github", url: "https://github.com/adem02/vip_clothes"},
+      {type: "demo", url: "https://vip-clothes-j2hm.vercel.app"}
+    ],
+    gallery: [
+      {src: vipClothesImportProductsDemo, alt: "VIP Clothes import products gif demo"},
+      {src: vipClothesHeroWeb, alt: "VIP Clothes hero section web screenshot"},
+      {src: vipClothesCategorySectionMobile, alt: "VIP Clothes category section mobile screenshot"},
+      {src: vipClothesProductDetailsMobile, alt: "VIP Clothes product details mobile screenshot"},
+      {src: vipClothesSearchMobile, alt: "VIP Clothes search page mobile screenshot"},
+      {src: vipClothesAdminLoginMobile, alt: "VIP Clothes admin login mobile screenshot"},
+      {src: vipClothesAdminImportMobile, alt: "VIP Clothes admin import page mobile screenshot"}
+    ],
+    level: "flagship"
   },
   {
-    title: "Epse",
-    image: githubLink,
-    description: "Un outil CLI développé en Go pour créer dynamiquement des structures de projet Express.",
-    technologies: ["Go", "Cobra", "Viper", "CLI"],
+    title: "Garbin API",
+    tagline: "API REST conçue dans le cadre de la soutenance de master.",
+    image: garbinApiCover,
+    description: "Projet académique où j'ai pris en charge la conception et le développement de l'API. Le dépôt reprend le code source depuis le repo d'origine pour mettre en avant les choix d'architecture et les bonnes pratiques appliquées.",
+    technologies: [
+      "Node.js", "Express", "TSOA", "TypeORM", "MariaDB"
+    ],
+    links: [{type: "github", url: "https://github.com/adem02/mt5-garbin-backend"}],
+    gallery: [{src: garbinApiCover, alt: "Garbin API placeholder"}],
+    level: "complete"
+  },
+  {
+    title: "EPSE Interface",
+    tagline: "Interface web pour configurer et générer des projets EPSE sans passer par le terminal.",
+    image: epseInterfaceTemplatesPage,
+    description: "Un complément visuel à la CLI EPSE pour choisir sa stack, parcourir les templates disponibles et exporter les commandes prêtes à l'emploi — sans toucher au terminal.",
+    technologies: ["Vite/React", "TypeScript", "Tailwind CSS", "Firebase"],
+    links: [
+      {type: "github", url: "https://github.com/adem02/epse-interface"},
+      {type: "demo", url: "https://epse-50c1c.web.app"}
+    ],
+    gallery: [
+      {src: epseInterfaceAddRouteCommandDemo, alt: "EPSE Interface add route gif demo"},
+      {src: epseInterfaceTemplatesPage, alt: "EPSE Interface templates page screenshot"},
+      {src: epseInterfaceProjectDetailsPage, alt: "EPSE Interface project details page screenshot"},
+      {src: epseInterfaceGenerateCommandPage, alt: "EPSE Interface generate command page screenshot"},
+      {src: epseInterfaceAddRouteCommandPage, alt: "EPSE Interface add route command page screenshot"},
+      {src: epseInterfaceDocsPage, alt: "EPSE Interface docs page screenshot"}
+    ],
+    level: "complete"
   },
 ];
 

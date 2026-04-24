@@ -1,3 +1,5 @@
+import type {IconType} from "react-icons";
+
 export interface IExperience {
   year: string;
   role: string;
@@ -8,10 +10,23 @@ export interface IExperience {
 
 export interface IProject {
   title: string;
+  tagline: string;
   image: string;
   description: string;
-  link?: string;
   technologies: string[];
+  links: IProjectLink[];
+  gallery: IProjectImage[];
+  level: "flagship" | "complete";
+}
+
+export interface IProjectLink {
+  type: string;
+  url: string;
+}
+
+export interface IProjectImage {
+  src: string;
+  alt: string;
 }
 
 export interface IContact {
@@ -28,7 +43,7 @@ export interface IFormation {
 }
 
 export interface ITechIcon {
-  icon: any;
+  icon: IconType;
   color: string;
   tooltip?: string;
 }
