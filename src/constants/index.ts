@@ -120,7 +120,7 @@ export const PROJECTS: IProject[] = [
     title: "EPSE Interface",
     tagline: "Interface web pour configurer et générer des projets EPSE sans passer par le terminal.",
     image: epseInterfaceTemplatesPage,
-    description: "Un complément visuel à la CLI EPSE pour choisir sa stack, parcourir les templates disponibles et exporter les commandes prêtes à l'emploi — sans toucher au terminal.",
+    description: "Un complément visuel à la CLI EPSE pour choisir sa stack, parcourir les templates disponibles et construire ses commandes directement via l'interface.",
     technologies: ["Vite/React", "TypeScript", "Tailwind CSS", "Firebase"],
     links: [
       {type: "github", url: "https://github.com/adem02/epse-interface"},

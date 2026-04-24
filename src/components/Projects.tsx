@@ -24,23 +24,14 @@ export const Projects = () => {
     <Section>
       <SectionTitle title={"Projects"} animation/>
       <div>
-        <motion.p
-          initial={{x: -60, opacity: 0}}
-          whileInView={{x: 0, opacity: 1}}
-          transition={{duration: 0.5}}
-          className={"mb-16 max-w-2xl py-2 tracking-tighter text-neutral-400"}
-        >
-          Une selection de projets concus pour montrer ma facon de structurer une interface, penser une architecture solide
-          et livrer des experiences lisibles du prototype au produit plus complet.
-        </motion.p>
         <div>
-          {projects.map((project) => (
+          {projects.map((project, index) => (
             <motion.article
               key={project.title}
-              initial={{x: -100, opacity: 0}}
-              whileInView={{x: 0, opacity: 1}}
-              viewport={{once: true, amount: 0.2}}
-              transition={{duration: 1}}
+              initial={{opacity: 0, x: index % 2 === 0 ? -60 : 60}}
+              whileInView={{opacity: 1, x: 0}}
+              viewport={{once: true, amount: 0.1}}
+              transition={{duration: 0.6, ease: "easeOut"}}
               className={"mb-20"}
             >
               <ProjectCard
