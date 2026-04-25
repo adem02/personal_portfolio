@@ -69,9 +69,9 @@ export const EXPERIENCES: IExperience[] = [
 export const PROJECTS: IProject[] = [
   {
     title: "EPSE CLI",
-    tagline: "Générateur de projets Express/TypeScript en ligne de commande, conçu pour aller vite.",
+    tagline: "CLI de génération de projets Express/TypeScript, orienté productivité et bonnes pratiques.",
     image: epseProjectGenerationScreenshot,
-    description: "Un outil CLI en Go que j'ai créé pour ne plus perdre de temps à bootstrapper un projet backend. En moins d'une minute, il génère une base propre avec deux modes d'architecture (Lite ou Clean) et permet d'ajouter des routes CRUD via une seule commande.",
+    description: "Outil CLI en Go conçu pour accélérer le démarrage de projets backend Node.js/Express/TypeScript. Il génère une structure en Lite ou Clean Architecture, et permet d'ajouter des routes, services, repositories, middlewares et un système d'auth JWT complet — chacun via une commande dédiée.",
     technologies: ["Go", "Cobra", "embed.FS", "Templates", "TypeScript"],
     links: [
       {type: "github", url: "https://github.com/adem02/epse"},
@@ -87,7 +87,7 @@ export const PROJECTS: IProject[] = [
     title: "VIP Clothes",
     tagline: "Application vitrine mode, catalogue et gestion de stock.",
     image: vipClothesHeroWeb,
-    description: "Une application de présentation de catalogue vêtements pensée pour un contexte où la connexion est limitée et les appareils variés. L'enjeu était de proposer une expérience fluide et rapide indépendamment des conditions d'utilisation, avec une interface accessible côté admin pour gérer le catalogue.",
+    description: "Une application de présentation de catalogue vêtements pensée pour un contexte où la connexion est limitée et les appareils variés. L'enjeu était de proposer une expérience fluide et rapide indépendamment des conditions d'utilisation, avec une interface d'administration réservée à la gestion du catalogue.",
     technologies: ["Next.js 15", "TypeScript", "Tailwind CSS", "Zustand", "Firebase", "Cloudinary", "Algolia", "Vercel"],
     links: [
       {type: "github", url: "https://github.com/adem02/vip_clothes"},
@@ -118,9 +118,9 @@ export const PROJECTS: IProject[] = [
   },
   {
     title: "EPSE Interface",
-    tagline: "Interface web pour configurer et générer des projets EPSE sans passer par le terminal.",
+    tagline: "Interface web pour construire et configurer ses commandes EPSE, prêtes à coller dans le terminal.",
     image: epseInterfaceTemplatesPage,
-    description: "Un complément visuel à la CLI EPSE pour choisir sa stack, parcourir les templates disponibles et construire ses commandes directement via l'interface.",
+    description: "Un complément visuel à la CLI EPSE pour choisir sa stack, parcourir les templates et construire ses commandes via l'interface — il n'y a plus qu'à les exécuter dans le terminal.",
     technologies: ["Vite/React", "TypeScript", "Tailwind CSS", "Firebase"],
     links: [
       {type: "github", url: "https://github.com/adem02/epse-interface"},
