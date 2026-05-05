@@ -14,6 +14,11 @@ import epseInterfaceGenerateCommandPage from "../assets/projects/epse-interface-
 import epseInterfaceAddRouteCommandPage from "../assets/projects/epse-interface-screeshot-cb-page-add-route-cmd.png";
 import epseInterfaceDocsPage from "../assets/projects/epse-interface-screeshot-doc-page.png";
 import epseInterfaceAddRouteCommandDemo from "../assets/projects/epse-interface-construct-add-route-command-demo.gif";
+import shortlinkLandingForm from "../assets/projects/url-shortner-app-langing-page-shorten-form.png";
+import shortlinkLandingCards from "../assets/projects/url-shortner-app-landing-page-cards.png";
+import shortlinkStatsTraffic from "../assets/projects/url-shortner-app-stats-page-traffic-overview.png";
+import shortlinkStatsDevices from "../assets/projects/url-shortner-app-stats-page-devices.png";
+import shortlinkApiDocs from "../assets/projects/url-shortner-api-docs.png";
 
 import {FaNodeJs} from "react-icons/fa";
 import {DiJava} from "react-icons/di";
@@ -68,6 +73,35 @@ export const EXPERIENCES: IExperience[] = [
 
 export const PROJECTS: IProject[] = [
   {
+    title: "URL Shortner",
+    tagline: "Raccourcisseur d'URL full-stack avec analytics, cache Redis et suivi asynchrone des clics.",
+    image: shortlinkLandingForm,
+    description: `Application full-stack de raccourcissement d'URL pensée pour les développeurs.
+Collez une URL longue, obtenez un lien court en quelques millisecondes, et suivez chaque clic
+avec des analytics détaillées — pays, appareils, navigateurs et trafic dans le temps.
+Conçue avec une architecture Redis-first pour des redirections en moins de 20ms et une file
+asynchrone de clics pour ne jamais bloquer l'expérience utilisateur.`,
+    technologies: [
+      "TypeScript", "Node.js", "Express", "PostgreSQL", "Redis",
+      "React", "Vite", "Tailwind CSS", "Recharts", "TypeORM",
+      "Docker", "Railway", "Vercel", "Supabase", "Upstash"
+    ],
+    links: [
+      {type: "demo", url: "https://url-shortner-app.vercel.app"},
+      {type: "api docs", url: "https://url-shortner-api-production-d05d.up.railway.app/api/docs"},
+      {type: "github frontend", url: "https://github.com/adem02/url-shortner-app"},
+      {type: "github backend", url: "https://github.com/adem02/url-shortner-api"}
+    ],
+    gallery: [
+      {src: shortlinkLandingForm, alt: "URL Shortner — page d'accueil, formulaire de raccourcissement"},
+      {src: shortlinkLandingCards, alt: "URL Shortner — page d'accueil, cartes de fonctionnalités"},
+      {src: shortlinkStatsTraffic, alt: "URL Shortner — analytics, vue d'ensemble du trafic"},
+      {src: shortlinkStatsDevices, alt: "URL Shortner — analytics, répartition par appareils"},
+      {src: shortlinkApiDocs, alt: "URL Shortner — documentation de l'API"}
+    ],
+    level: "flagship"
+  },
+  {
     title: "EPSE CLI",
     tagline: "CLI de génération de projets Express/TypeScript, orienté productivité et bonnes pratiques.",
     image: epseProjectGenerationScreenshot,
@@ -90,8 +124,7 @@ export const PROJECTS: IProject[] = [
     description: "Une application de présentation de catalogue vêtements pensée pour un contexte où la connexion est limitée et les appareils variés. L'enjeu était de proposer une expérience fluide et rapide indépendamment des conditions d'utilisation, avec une interface d'administration réservée à la gestion du catalogue.",
     technologies: ["Next.js 15", "TypeScript", "Tailwind CSS", "Zustand", "Firebase", "Cloudinary", "Algolia", "Vercel"],
     links: [
-      {type: "github", url: "https://github.com/adem02/vip_clothes"},
-      {type: "demo", url: "https://vip-clothes-j2hm.vercel.app"}
+      {type: "demo staging", url: "https://vip-clothes-j2hm.vercel.app"}
     ],
     gallery: [
       {src: vipClothesImportProductsDemo, alt: "VIP Clothes import products gif demo"},
