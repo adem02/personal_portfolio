@@ -63,29 +63,28 @@ export const Projects = () => {
           </p>
         )}
 
-        <div>
+        <div className="space-y-24 sm:space-y-32">
           {projects.map((project, index) => (
-            <motion.article
+            <motion.div
               key={project.title}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.05 }}
-              className="mb-16"
+              transition={{ duration: 0.6, ease: "easeOut" }}
             >
               <ProjectCard
                 project={project}
-                variant={"flagship"}
+                index={index}
                 selectedImage={selectedImages[project.title]}
                 onSelectImage={handleSelectImage}
                 onOpenLightbox={openLightbox}
                 onImageError={handleImageError}
               />
-            </motion.article>
+            </motion.div>
           ))}
         </div>
 
-        <div className="mt-12 flex flex-col items-center gap-4 rounded-2xl border border-neutral-800 bg-neutral-900/30 px-6 py-12 backdrop-blur sm:flex-row sm:justify-between sm:px-10">
+        <div className="mt-24 flex flex-col items-center gap-4 rounded-2xl border border-neutral-800 bg-neutral-900/30 px-6 py-12 backdrop-blur sm:flex-row sm:justify-between sm:px-10">
           <div className="text-center sm:text-left">
             <p className="font-serif-display italic text-2xl sm:text-3xl text-neutral-100">
               Envie de voir plus ?

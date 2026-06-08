@@ -28,7 +28,7 @@ export const ProjectPreview = ({
     <div>
       <button
         type={"button"}
-        className={"group relative mb-3 block w-full overflow-hidden rounded-2xl border border-neutral-800/80 bg-neutral-950/40"}
+        className={"group relative mb-3 block w-full overflow-hidden rounded-2xl ring-1 ring-neutral-800 bg-neutral-950/40"}
         onClick={() => onOpenLightbox(primaryImage)}
         aria-label={`Ouvrir la galerie de ${project.title}`}
       >
@@ -39,7 +39,7 @@ export const ProjectPreview = ({
             event.currentTarget.src = project.gallery[0]?.src ?? project.image;
             onImageError(project.gallery[0]?.src ?? project.image);
           }}
-          className={`${previewHeightClassName} w-full rounded-2xl object-cover transition-transform duration-300 group-hover:scale-[1.015]`}
+          className={`${previewHeightClassName} w-full rounded-2xl object-cover transition-transform duration-700 group-hover:scale-[1.02]`}
         />
         <div className={"pointer-events-none absolute inset-0 flex items-start justify-between bg-gradient-to-t from-black/35 via-transparent to-transparent p-3 opacity-100 transition-opacity duration-300 sm:opacity-0 sm:group-hover:opacity-100"}>
           <span className={"inline-flex items-center gap-2 rounded-full border border-neutral-700 bg-neutral-950/75 px-3 py-1 text-[11px] text-neutral-100"}>
