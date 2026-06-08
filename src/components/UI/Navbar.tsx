@@ -35,11 +35,11 @@ const Navbar = () => {
           transition={{duration: 0.3, ease: "easeInOut"}}
           className={"sticky top-0 z-50 backdrop-blur-md border-b border-neutral-800/50"}
         >
-          <div className={"container mx-auto flex items-center justify-between px-8 py-2"}>
+          <div className={"container mx-auto flex items-center justify-between gap-3 px-4 py-2 sm:px-6 lg:px-8"}>
             <div className={"flex flex-shrink-0 items-center"}>
-              <img className={"m-0 cursor-pointer"} width={120} src={almahTechLogo} alt={""}/>
+              <img className={"m-0 h-auto w-24 cursor-pointer sm:w-[120px]"} src={almahTechLogo} alt={""}/>
             </div>
-            <div className={"flex items-center gap-4 text-2xl"}>
+            <div className={"flex items-center gap-2 text-xl sm:gap-4 sm:text-2xl"}>
               {icons.map((icon, index) => (
                 <motion.a
                   whileHover={{scale: 1.2}}
@@ -49,11 +49,13 @@ const Navbar = () => {
                 </motion.a>
               ))}
               <a
-                href={"/CV_Ahmed_DEM.pdf"}
+                href={"/CV_DEM_Ahmed_Dev_Fullstack.pdf"}
                 download
-                className={"text-sm font-medium px-4 py-2 rounded-lg border border-neutral-700 text-neutral-200 transition-colors duration-300 hover:border-neutral-500 hover:bg-neutral-900/80"}
+                className={"rounded-lg border border-neutral-700 px-2.5 py-2 text-xs font-medium text-neutral-200 transition-colors duration-300 hover:border-neutral-500 hover:bg-neutral-900/80 sm:px-4 sm:text-sm"}
               >
-                <FiDownload className={"inline mr-1.5 text-base"}/>Téléchargez mon CV
+                <FiDownload className={"mr-1 inline text-sm sm:text-base"}/>
+                <span className={"sm:hidden"}>CV</span>
+                <span className={"hidden sm:inline"}>Mon CV</span>
               </a>
             </div>
           </div>

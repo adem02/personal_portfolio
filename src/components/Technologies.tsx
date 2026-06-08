@@ -32,7 +32,7 @@ export const Technologies = () => {
         whileInView={{x: 0, opacity: 1}}
         initial={{x: -100, opacity: 0}}
         transition={{duration: 1.5}}
-        className={"flex flex-wrap items-center justify-center gap-4"}>
+        className={"flex flex-wrap items-center justify-center gap-3 sm:gap-4"}>
         {
           TECHICONS.map((techIcon, index) => (
             <motion.div
@@ -40,12 +40,12 @@ export const Technologies = () => {
               variants={iconVariants(getRandomDuration())}
               initial={"initial"}
               animate={"animate"}
-              className={"rounded-2xl border-4 border-neutral-800 p-4 hover:opacity-100"}
+              className={"rounded-2xl border-2 border-neutral-800 p-3 hover:opacity-100 sm:border-4 sm:p-4"}
               data-tooltip-id={"techIconTooltip"}
               data-tooltip-content={techIcon?.tooltip}
 
             >
-              <techIcon.icon className={`text-7xl ${techIcon.color}`}/>
+              <techIcon.icon className={`text-5xl sm:text-6xl lg:text-7xl ${techIcon.color}`}/>
             </motion.div>
           ))
         }

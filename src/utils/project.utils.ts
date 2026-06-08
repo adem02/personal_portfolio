@@ -1,4 +1,4 @@
-import type {IProject, IProjectImage, IProjectLink} from "../constants/types";
+import type {IProject, IProjectImage, IProjectLink} from "../types";
 
 const LINK_LABELS: Record<string, string> = {
   github: "GitHub",

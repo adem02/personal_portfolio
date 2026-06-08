@@ -1,6 +1,8 @@
-import type {IProject} from "../../constants/types";
+import type {IProject} from "../../types";
 import {ProjectPreview} from "./ProjectPreview.tsx";
 import {getLinkLabel, getSafeLinks} from "../../utils/project.utils.ts";
+import {logEvent} from "firebase/analytics";
+import {analytics} from "../../lib/firebase";
 
 type ProjectCardProps = {
   project: IProject;
@@ -23,7 +25,7 @@ export const ProjectCard = ({
 
   if (variant === "flagship") {
     return (
-      <article className={"mb-20 rounded-2xl border border-neutral-800/80 bg-neutral-950/40 p-6 transition-colors duration-300 hover:border-neutral-700 hover:bg-neutral-950/60"}>
+      <article className={"mb-20 rounded-2xl border border-neutral-800/80 bg-neutral-950/40 p-4 transition-colors duration-300 hover:border-neutral-700 hover:bg-neutral-950/60 sm:p-6"}>
         <div className={"flex flex-col gap-6 lg:flex-row"}>
           <div className={"w-full lg:w-5/12"}>
             <ProjectPreview
@@ -37,9 +39,9 @@ export const ProjectCard = ({
             />
           </div>
           <div className={"w-full lg:w-7/12 lg:pt-2"}>
-            <h3 className={"mb-2 font-semibold tracking-tighter"}>{project.title}</h3>
+            <h3 className={"mb-2 text-xl font-semibold tracking-tighter sm:text-2xl"}>{project.title}</h3>
             <p className={"mb-4 max-w-2xl text-sm text-purple-100"}>{project.tagline}</p>
-            <p className={"mb-5 max-w-2xl text-neutral-400"}>{project.description}</p>
+            <p className={"mb-5 max-w-2xl leading-relaxed text-neutral-400"}>{project.description}</p>
             <div className={"mb-6 flex flex-wrap"}>
               {project.technologies.map((technology) => (
                 <span key={technology} className={"mr-2 mb-2 text-sm bg-neutral-900 px-2 py-1 rounded text-purple-800 font-medium"}>
@@ -54,7 +56,13 @@ export const ProjectCard = ({
                   href={link.url}
                   target={"_blank"}
                   rel={"noreferrer noopener"}
-                  className={"rounded-lg border border-neutral-700 px-4 py-2 text-sm font-medium text-neutral-200 transition-colors duration-300 hover:border-neutral-500 hover:bg-neutral-900/80"}
+                  onClick={() => {
+                    logEvent(analytics, "project_link_click", {
+                      project_title: project.title,
+                      link_type: link.type
+                    });
+                  }}
+                  className={"rounded-lg border border-neutral-700 px-3 py-2 text-xs font-medium text-neutral-200 transition-colors duration-300 hover:border-neutral-500 hover:bg-neutral-900/80 sm:px-4 sm:text-sm"}
                 >
                   {getLinkLabel(link.type)}
                 </a>
