@@ -1,12 +1,13 @@
-import type {IProject} from "../../types";
-import {ProjectPreview} from "./ProjectPreview.tsx";
-import {getLinkLabel, getSafeLinks} from "../../utils/project.utils.ts";
-import {logEvent} from "firebase/analytics";
-import {analytics} from "../../lib/firebase";
+import type { IProject } from "../../types";
+import { ProjectPreview } from "./ProjectPreview.tsx";
+import { getLinkLabel, getSafeLinks } from "../../utils/project.utils.ts";
+import { logEvent } from "firebase/analytics";
+import { analytics } from "../../lib/firebase";
+import { FiArrowUpRight } from "react-icons/fi";
 
 type ProjectCardProps = {
   project: IProject;
-  variant: "flagship" | "complete";
+  index: number;
   selectedImage?: string;
   onSelectImage: (projectTitle: string, imageSrc: string) => void;
   onOpenLightbox: (projectTitle: string, imageSrc: string) => void;
@@ -15,96 +16,98 @@ type ProjectCardProps = {
 
 export const ProjectCard = ({
   project,
-  variant,
+  index,
   selectedImage,
   onSelectImage,
   onOpenLightbox,
-  onImageError
+  onImageError,
 }: ProjectCardProps) => {
-  const githubLink = getSafeLinks(project.links).find((link) => link.type.toLowerCase() === "github");
+  const isReversed = index % 2 === 1;
+  const orderedNumber = String(index + 1).padStart(2, "0");
+  const links = getSafeLinks(project.links).slice(0, 2);
 
-  if (variant === "flagship") {
-    return (
-      <article className={"mb-20 rounded-2xl border border-neutral-800/80 bg-neutral-950/40 p-4 transition-colors duration-300 hover:border-neutral-700 hover:bg-neutral-950/60 sm:p-6"}>
-        <div className={"flex flex-col gap-6 lg:flex-row"}>
-          <div className={"w-full lg:w-5/12"}>
-            <ProjectPreview
-              project={project}
-              selectedImage={selectedImage}
-              previewHeightClassName={"h-64 lg:h-72"}
-              thumbnailHeightClassName={"h-20"}
-              onOpenLightbox={(imageSrc) => onOpenLightbox(project.title, imageSrc)}
-              onSelectImage={(imageSrc) => onSelectImage(project.title, imageSrc)}
-              onImageError={(fallbackSrc) => onImageError(project.title, fallbackSrc)}
-            />
+  return (
+    <article className="group/card grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+      {/* Visual */}
+      <div className={`lg:col-span-7 ${isReversed ? "lg:order-2" : ""}`}>
+        <ProjectPreview
+          project={project}
+          selectedImage={selectedImage}
+          previewHeightClassName="h-64 sm:h-80 lg:h-[440px]"
+          thumbnailHeightClassName="h-16"
+          onOpenLightbox={(imageSrc) => onOpenLightbox(project.title, imageSrc)}
+          onSelectImage={(imageSrc) => onSelectImage(project.title, imageSrc)}
+          onImageError={(fallbackSrc) => onImageError(project.title, fallbackSrc)}
+        />
+      </div>
+
+      {/* Content */}
+      <div className={`lg:col-span-5 ${isReversed ? "lg:order-1" : ""}`}>
+        <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.25em] text-neutral-500">
+          <span className="font-serif-display italic text-amber-200/70 text-sm normal-case tracking-normal">
+            {orderedNumber}
+          </span>
+          <span className="h-px w-8 bg-neutral-800" />
+          <span>Projet</span>
+        </div>
+
+        <h3 className="mt-5 text-3xl sm:text-4xl lg:text-5xl tracking-tight text-neutral-100 leading-[1.05]">
+          {project.title}
+        </h3>
+
+        {project.tagline && (
+          <p className="mt-3 font-serif-display italic text-lg sm:text-xl text-amber-200/80">
+            {project.tagline}
+          </p>
+        )}
+
+        <p className="mt-5 text-sm sm:text-base leading-relaxed text-neutral-400">
+          {project.description}
+        </p>
+
+        {project.technologies.length > 0 && (
+          <div className="mt-6 flex flex-wrap gap-1.5">
+            {project.technologies.map((technology) => (
+              <span
+                key={technology}
+                className="rounded-full border border-neutral-800 bg-neutral-950/40 px-2.5 py-1 text-[11px] text-neutral-300 transition group-hover/card:border-neutral-700"
+              >
+                {technology}
+              </span>
+            ))}
           </div>
-          <div className={"w-full lg:w-7/12 lg:pt-2"}>
-            <h3 className={"mb-2 text-xl font-semibold tracking-tighter sm:text-2xl"}>{project.title}</h3>
-            <p className={"mb-4 max-w-2xl text-sm text-purple-100"}>{project.tagline}</p>
-            <p className={"mb-5 max-w-2xl leading-relaxed text-neutral-400"}>{project.description}</p>
-            <div className={"mb-6 flex flex-wrap"}>
-              {project.technologies.map((technology) => (
-                <span key={technology} className={"mr-2 mb-2 text-sm bg-neutral-900 px-2 py-1 rounded text-purple-800 font-medium"}>
-                  {technology}
-                </span>
-              ))}
-            </div>
-            <div className={"flex flex-wrap gap-3"}>
-              {getSafeLinks(project.links).slice(0, 2).map((link) => (
+        )}
+
+        {links.length > 0 && (
+          <div className="mt-8 flex flex-wrap gap-3">
+            {links.map((link, linkIndex) => {
+              const isPrimary = linkIndex === 0;
+              return (
                 <a
                   key={`${project.title}-${link.type}`}
                   href={link.url}
-                  target={"_blank"}
-                  rel={"noreferrer noopener"}
+                  target="_blank"
+                  rel="noreferrer noopener"
                   onClick={() => {
                     logEvent(analytics, "project_link_click", {
                       project_title: project.title,
-                      link_type: link.type
+                      link_type: link.type,
                     });
                   }}
-                  className={"rounded-lg border border-neutral-700 px-3 py-2 text-xs font-medium text-neutral-200 transition-colors duration-300 hover:border-neutral-500 hover:bg-neutral-900/80 sm:px-4 sm:text-sm"}
+                  className={`group/link inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-xs font-medium transition ${
+                    isPrimary
+                      ? "bg-neutral-50 text-neutral-950 hover:bg-amber-200"
+                      : "border border-neutral-700 text-neutral-200 hover:border-neutral-400 hover:text-white"
+                  }`}
                 >
                   {getLinkLabel(link.type)}
+                  <FiArrowUpRight className="text-sm transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
                 </a>
-              ))}
-            </div>
+              );
+            })}
           </div>
-        </div>
-      </article>
-    );
-  }
-
-  return (
-    <article className={"rounded-2xl border border-neutral-800/80 bg-neutral-950/35 p-6 transition-colors duration-300 hover:border-neutral-700 hover:bg-neutral-950/55"}>
-      <ProjectPreview
-        project={project}
-        selectedImage={selectedImage}
-        previewHeightClassName={"h-48"}
-        thumbnailHeightClassName={"h-16"}
-        onOpenLightbox={(imageSrc) => onOpenLightbox(project.title, imageSrc)}
-        onSelectImage={(imageSrc) => onSelectImage(project.title, imageSrc)}
-        onImageError={(fallbackSrc) => onImageError(project.title, fallbackSrc)}
-      />
-      <h3 className={"mb-2 font-semibold tracking-tighter"}>{project.title}</h3>
-      <p className={"mb-3 text-sm text-purple-100"}>{project.tagline}</p>
-      <p className={"mb-4 text-neutral-400"}>{project.description}</p>
-      <div className={"mb-5 flex flex-wrap"}>
-        {project.technologies.map((technology) => (
-          <span key={technology} className={"mr-2 mb-2 text-sm bg-neutral-900 px-2 py-1 rounded text-purple-800 font-medium"}>
-            {technology}
-          </span>
-        ))}
+        )}
       </div>
-      {githubLink && (
-        <a
-          href={githubLink.url}
-          target={"_blank"}
-          rel={"noreferrer noopener"}
-          className={"inline-block rounded-lg border border-neutral-700 px-4 py-2 text-sm font-medium text-neutral-200 transition-colors duration-300 hover:border-neutral-500 hover:bg-neutral-900/80"}
-        >
-          GitHub
-        </a>
-      )}
     </article>
   );
 };
