@@ -8,7 +8,7 @@ type SectionTitleProps = {
   animation?: boolean;
 };
 
-export const SectionTitle = ({className = "my-20 text-center text-4xl", title = "", ...props}: SectionTitleProps) => {
+export const SectionTitle = ({className = "my-14 text-center text-3xl sm:my-16 sm:text-4xl", title = "", ...props}: SectionTitleProps) => {
   if (props.animation) {
     return (
       <motion.h2

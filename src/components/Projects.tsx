@@ -4,10 +4,14 @@ import {motion} from "framer-motion";
 import {ProjectCard} from "./projects/ProjectCard.tsx";
 import {ProjectLightbox} from "./projects/ProjectLightbox.tsx";
 import {useProjects} from "../hooks/useProjects.ts";
+import {logEvent} from "firebase/analytics";
+import {analytics} from "../lib/firebase";
 
 export const Projects = () => {
   const {
     projects,
+    isLoadingProjects,
+    projectsLoadError,
     selectedImages,
     activeProject,
     lightboxIndex,
@@ -24,6 +28,20 @@ export const Projects = () => {
     <Section>
       <SectionTitle title={"Projects"} animation/>
       <div>
+        {isLoadingProjects && (
+          <p className={"py-16 text-center text-neutral-400"}>Chargement des projets...</p>
+        )}
+
+        {projectsLoadError && !isLoadingProjects && (
+          <p className={"py-16 text-center text-red-400"}>
+            Impossible de charger les projets : {projectsLoadError}
+          </p>
+        )}
+
+        {!isLoadingProjects && !projectsLoadError && projects.length === 0 && (
+          <p className={"py-16 text-center text-neutral-400"}>Aucun projet à afficher pour le moment.</p>
+        )}
+
         <div>
           {projects.map((project, index) => (
             <motion.article
@@ -52,6 +70,9 @@ export const Projects = () => {
             href={"https://github.com/adem02"}
             target={"_blank"}
             rel={"noreferrer noopener"}
+            onClick={() => {
+              logEvent(analytics, "github_cta_click");
+            }}
             className={"inline-block rounded-lg border border-neutral-700 bg-neutral-950/40 px-6 py-3 text-sm font-medium text-neutral-200 transition-colors duration-300 hover:border-neutral-500 hover:bg-neutral-900/70"}
           >
             Voir mon GitHub

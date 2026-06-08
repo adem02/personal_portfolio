@@ -1,5 +1,5 @@
 import {FiImage, FiMaximize2} from "react-icons/fi";
-import type {IProject} from "../../constants/types";
+import type {IProject} from "../../types";
 import {getPrimaryImage} from "../../utils/project.utils.ts";
 
 type ProjectPreviewProps = {
@@ -41,7 +41,7 @@ export const ProjectPreview = ({
           }}
           className={`${previewHeightClassName} w-full rounded-2xl object-cover transition-transform duration-300 group-hover:scale-[1.015]`}
         />
-        <div className={"pointer-events-none absolute inset-0 flex items-start justify-between bg-gradient-to-t from-black/35 via-transparent to-transparent p-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100"}>
+        <div className={"pointer-events-none absolute inset-0 flex items-start justify-between bg-gradient-to-t from-black/35 via-transparent to-transparent p-3 opacity-100 transition-opacity duration-300 sm:opacity-0 sm:group-hover:opacity-100"}>
           <span className={"inline-flex items-center gap-2 rounded-full border border-neutral-700 bg-neutral-950/75 px-3 py-1 text-[11px] text-neutral-100"}>
             <FiImage className={"text-sm"}/>
             Galerie
@@ -53,7 +53,7 @@ export const ProjectPreview = ({
       </button>
 
       {hasGallery && (
-        <div className={"grid grid-cols-4 gap-3"}>
+        <div className={"flex gap-2 overflow-x-auto pb-1 sm:grid sm:grid-cols-4 sm:gap-3 sm:overflow-visible"}>
           {project.gallery.slice(0, 4).map((image, index) => {
             const isActive = primaryImage === image.src;
 
@@ -62,7 +62,7 @@ export const ProjectPreview = ({
                 key={`${project.title}-${image.alt}`}
                 type={"button"}
                 onClick={() => onSelectImage(image.src)}
-                className={`overflow-hidden rounded-xl border bg-neutral-950/30 transition-colors duration-300 ${isActive ? "border-purple-200/70" : "border-neutral-800 hover:border-neutral-600"}`}
+                className={`min-w-[74px] flex-shrink-0 overflow-hidden rounded-xl border bg-neutral-950/30 transition-colors duration-300 sm:min-w-0 ${isActive ? "border-purple-200/70" : "border-neutral-800 hover:border-neutral-600"}`}
                 aria-label={`Afficher ${project.title} visuel ${index + 1}`}
               >
                 <img
@@ -71,7 +71,7 @@ export const ProjectPreview = ({
                   onError={(event) => {
                     event.currentTarget.src = project.gallery[0]?.src ?? project.image;
                   }}
-                  className={`${thumbnailHeightClassName} w-full object-cover`}
+                  className={`${thumbnailHeightClassName} w-[74px] object-cover sm:w-full`}
                 />
               </button>
             );

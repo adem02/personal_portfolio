@@ -24,8 +24,8 @@ export const About = () => {
           transition={{duration: 0.5}}
           className={"w-full lg:w-1/2"}
         >
-          <div className={"flex justify-center lg:justify-start"}>
-            <p className={"my-2 max-w-xl py-6 tracking-tighter whitespace-pre-line"}>{ABOUT_TEXT}</p>
+          <div className={"flex justify-start"}>
+            <p className={"my-2 max-w-xl py-6 text-left leading-relaxed text-neutral-400 tracking-tight whitespace-normal lg:whitespace-pre-line"}>{ABOUT_TEXT}</p>
           </div>
         </motion.div>
       </div>
