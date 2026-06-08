@@ -5,32 +5,31 @@ import {SiMongodb} from "react-icons/si";
 import {BiLogoPostgresql} from "react-icons/bi";
 import {FaSymfony} from "react-icons/fa";
 import {RiReactjsLine} from "react-icons/ri";
-import {SiNestjs} from "react-icons/si";
-import {SiSpringboot} from "react-icons/si";
+import {SiNestjs, SiNextdotjs} from "react-icons/si";
 import {IoLogoFirebase} from "react-icons/io5";
+
 import {SiRabbitmq} from "react-icons/si";
-import {FaGitAlt} from "react-icons/fa";
+import {FaGitAlt, FaDocker} from "react-icons/fa";
+import {SiVercel, SiSupabase, SiGooglecloud} from "react-icons/si";
 import {FaGolang} from "react-icons/fa6";
 import {RiTailwindCssFill} from "react-icons/ri";
 import {SiMariadbfoundation} from "react-icons/si";
 
+import {FiMail, FiMapPin, FiPhone} from "react-icons/fi";
+import type {IconType} from "react-icons";
+
 import {IContact, IExperience, IFormation, ITechIcon} from "../types";
 
-export const HERO_CONTENT = `Je suis développeur avec près de 4 ans d'expérience dans le développement d'applications web et logicielles. 
+export const HERO_CONTENT = `Je suis développeur avec plus de 3 ans d'expérience dans le développement d'applications web et logicielles. 
 Ce qui me passionne, c'est la liberté de transformer des idées en solutions concrètes. 
 J'aime structurer mes projets de manière réfléchie et efficace, tout en cherchant constamment à m'améliorer et à innover. 
 Pour moi, coder, c'est bien plus qu'écrire des lignes de code : c'est contribuer à façonner l'avenir et à avoir un impact sur le monde qui nous entoure.`;
 
-export const ABOUT_TEXT = `Mon parcours académique a débuté par une licence en Mathématiques et Informatique, où j'ai acquis les bases essentielles de l'informatique, de l'algorithmique, de l'algèbre et des mathématiques appliquées.
-Cette formation m'a permis de poser des fondations solides pour aborder des problématiques techniques avec rigueur.
+export const ABOUT_TEXT = `Ce qui me fait avancer, c'est l'impact. Je préfère construire des produits qu'on utilise vraiment plutôt que des démonstrations techniques. Voir une fonctionnalité simplifier un quotidien, fluidifier un process, faire gagner du temps à une équipe : c'est là que je prends du plaisir.
 
-Après la licence, j'ai poursuivi avec un bachelor en alternance, où j'ai allié apprentissage théorique et mise en pratique. 
-Cette expérience m'a permis de découvrir concrètement le développement logiciel en travaillant avec diverses technologies, notamment en front-end, back-end, et bases de données.
+Rigoureux par nature, pragmatique par expérience. J'aime les bonnes pratiques, l'architecture clean, le code testé et maintenable. Mais j'ai appris à doser: la solution la plus simple qui résout le problème vaut mieux que la plus élégante qui le contourne. Livrer compte autant que bien faire.
 
-Lors de mon master en alternance, j'ai participé à des projets plus complexes, nécessitant une organisation rigoureuse et une collaboration efficace en équipe. 
-J'ai conçu et implémenté des pipelines CI/CD pour automatiser les processus de développement et de déploiement. J'ai également utilisé des outils tels que Jira et Trello pour la gestion de projets, et Scaleway pour des déploiements dans le cloud. Ces projets m'ont permis de travailler sur des solutions robustes et évolutives tout en consolidant mes compétences techniques.
-
-Ces expériences combinées m'ont offert une progression significative, tant sur le plan technique qu'organisationnel, et m'ont familiarisé avec les outils et méthodologies essentiels au développement logiciel moderne.`;
+Au-delà du code, je suis curieux de tout ce qui touche à la tech, supporter de foot et amateur de cinéma. Les bonnes histoires, peu importe le médium.`;
 
 export const EXPERIENCES: IExperience[] = [
   {
@@ -61,6 +60,33 @@ export const CONTACT: IContact = {
   phoneNo: "+33 6 14 28 82 85",
   email: "demahmed02@gmail.com",
 };
+
+export interface IContactChannel {
+  Icon: IconType;
+  label: string;
+  value: string;
+  href?: string;
+}
+
+export const CONTACT_CHANNELS: IContactChannel[] = [
+  {
+    Icon: FiMail,
+    label: "Email",
+    value: CONTACT.email,
+    href: `mailto:${CONTACT.email}`,
+  },
+  {
+    Icon: FiPhone,
+    label: "Téléphone",
+    value: CONTACT.phoneNo,
+    href: `tel:${CONTACT.phoneNo.replace(/\s/g, "")}`,
+  },
+  {
+    Icon: FiMapPin,
+    label: "Localisation",
+    value: CONTACT.address,
+  },
+];
 
 export const FORMATIONS: IFormation[] = [
   {
@@ -128,6 +154,11 @@ export const TECHICONS: ITechIcon[] = [
     tooltip: "React.js"
   },
   {
+    icon: SiNextdotjs,
+    color: "text-neutral-100",
+    tooltip: "Next.js"
+  },
+  {
     icon: RiTailwindCssFill,
     color: "text-blue-500",
     tooltip: "Tailwind CSS"
@@ -141,11 +172,6 @@ export const TECHICONS: ITechIcon[] = [
     icon: FaSymfony,
     color: "text-black-500",
     tooltip: "Symfony"
-  },
-  {
-    icon: SiSpringboot,
-    color: "text-green-500",
-    tooltip: "Spring Boot"
   },
   {
     icon: IoLogoFirebase,
@@ -162,4 +188,26 @@ export const TECHICONS: ITechIcon[] = [
     color: "text-red-500",
     tooltip: "Git"
   },
+  {
+    icon: FaDocker,
+    color: "text-sky-400",
+    tooltip: "Docker"
+  },
+  {
+    icon: SiVercel,
+    color: "text-neutral-100",
+    tooltip: "Vercel"
+  },
+  {
+    icon: SiSupabase,
+    color: "text-emerald-500",
+    tooltip: "Supabase"
+  },
+  {
+    icon: SiGooglecloud,
+    color: "text-blue-400",
+    tooltip: "Google Cloud"
+  },
 ];
+
+export * from "./portfolio.constants";

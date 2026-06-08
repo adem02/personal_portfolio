@@ -59,10 +59,10 @@ export const ProjectPreview = ({
 
             return (
               <button
-                key={`${project.title}-${image.alt}`}
+                key={`${project.title}-${image.alt || "img"}-${index}`}
                 type={"button"}
                 onClick={() => onSelectImage(image.src)}
-                className={`min-w-[74px] flex-shrink-0 overflow-hidden rounded-xl border bg-neutral-950/30 transition-colors duration-300 sm:min-w-0 ${isActive ? "border-purple-200/70" : "border-neutral-800 hover:border-neutral-600"}`}
+                className={`min-w-[74px] flex-shrink-0 overflow-hidden rounded-xl border bg-neutral-950/30 transition-colors duration-300 sm:min-w-0 ${isActive ? "border-amber-200/70" : "border-neutral-800 hover:border-neutral-600"}`}
                 aria-label={`Afficher ${project.title} visuel ${index + 1}`}
               >
                 <img
